@@ -4,7 +4,9 @@ CREATE TABLE upload_sns.reply (
 	user_id int NOT NULL,
 	parent_id int NULL,
 	insert_time timestamp NOT NULL,
+	article_id int NOT NULL,
 	CONSTRAINT reply_pk PRIMARY KEY (id),
-	CONSTRAINT fk_parent_id FOREIGN KEY (parent_id) REFERENCES upload_sns.reply(id) ON DELETE CASCADE,
+	CONSTRAINT fk_aticle_id FOREIGN KEY (article_id) REFERENCES upload_sns.article(id) ON DELETE CASCADE,
+	CONSTRAINT fk_parent_id FOREIGN KEY (parent_id) REFERENCES upload_sns.reply(id) ON DELETE SET NULL,
 	CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES upload_sns.user(id) ON DELETE CASCADE
 );
